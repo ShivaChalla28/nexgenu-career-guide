@@ -8,7 +8,7 @@ export default function ManageBranches() {
   const [newBranchName, setNewBranchName] = useState('');
 
   const fetchBranches = () => {
-    fetch('/api/branches/')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/branches/`)
       .then(res => res.json())
       .then(data => { setBranches(data); setLoading(false); })
       .catch(err => { console.error(err); setLoading(false); });
@@ -21,7 +21,7 @@ export default function ManageBranches() {
   const handleCreate = async () => {
     if (!newBranchName) return;
     try {
-      const res = await fetch('/api/branches/', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/branches/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newBranchName, slug: newBranchName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') })
@@ -39,7 +39,7 @@ export default function ManageBranches() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this branch?')) return;
     try {
-      await fetch(`/api/branches/${id}`, { method: 'DELETE' });
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/branches/${id}`, { method: 'DELETE' });
       fetchBranches();
     } catch (err) {
       console.error(err);

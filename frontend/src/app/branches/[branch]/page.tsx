@@ -67,7 +67,7 @@ export default function BranchCareers({ params }: { params: { branch: string } }
     const fetchCareers = async () => {
       try {
         const slug = params.branch;
-        const res = await fetch(`/api/branches/${slug}/careers`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/branches/${slug}/careers`);
         if (!res.ok) {
           const errText = await res.text();
           throw new Error(`HTTP ${res.status}: ${errText}`);

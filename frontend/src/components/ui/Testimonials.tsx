@@ -6,7 +6,7 @@ export default function Testimonials() {
   const [feedbacks, setFeedbacks] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/api/feedback/approved')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/feedback/approved`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {

@@ -8,7 +8,7 @@ export default function ManageRoadmaps() {
 
   const fetchRoadmaps = () => {
     setLoading(true);
-    fetch(`/api/roadmaps/?skip=${page * 50}&limit=50`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/roadmaps/?skip=${page * 50}&limit=50`)
       .then(res => res.json())
       .then(data => { setRoadmaps(data); setLoading(false); })
       .catch(err => { console.error(err); setLoading(false); });
@@ -19,7 +19,7 @@ export default function ManageRoadmaps() {
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this roadmap?')) return;
     try {
-      await fetch(`/api/roadmaps/${id}`, { method: 'DELETE' });
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/roadmaps/${id}`, { method: 'DELETE' });
       fetchRoadmaps();
     } catch (err) { console.error(err); }
   };

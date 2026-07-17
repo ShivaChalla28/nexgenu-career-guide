@@ -92,7 +92,7 @@ export default function Home() {
   const [uiAlerts, setUiAlerts] = React.useState<any[]>([]);
 
   React.useEffect(() => {
-    fetch('/api/admin/stats')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/admin/stats`)
       .then(res => res.json())
       .then(data => {
         if (data && data.users !== undefined) {
@@ -104,7 +104,7 @@ export default function Home() {
       })
       .catch(err => console.error("Failed to fetch user count:", err));
 
-    fetch('/api/ui/buttons')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/buttons`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -113,7 +113,7 @@ export default function Home() {
       })
       .catch(err => console.error(err));
 
-    fetch('/api/ui/alerts')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/alerts`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {

@@ -31,7 +31,7 @@ const BRANCH_SLUGS = [
 
 async function getCareerSlugs(): Promise<string[]> {
   try {
-    const res = await fetch('/api/careers', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/careers`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) return [];

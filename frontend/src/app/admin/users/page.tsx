@@ -8,7 +8,7 @@ export default function ManageUsers() {
 
   const fetchUsers = () => {
     setLoading(true);
-    fetch(`/api/admin/users?skip=${page * 50}&limit=50`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/admin/users?skip=${page * 50}&limit=50`)
       .then(res => res.json())
       .then(data => { setUsers(data); setLoading(false); })
       .catch(err => { console.error(err); setLoading(false); });
@@ -19,7 +19,7 @@ export default function ManageUsers() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this user?')) return;
     try {
-      await fetch(`/api/admin/users/${id}`, { method: 'DELETE' });
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/admin/users/${id}`, { method: 'DELETE' });
       fetchUsers();
     } catch (err) { console.error(err); }
   };

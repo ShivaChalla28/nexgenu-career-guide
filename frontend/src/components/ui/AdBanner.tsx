@@ -9,7 +9,7 @@ export default function AdBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch('/api/ui/ads')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/ads`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {

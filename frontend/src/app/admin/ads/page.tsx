@@ -9,7 +9,7 @@ export default function AdManager() {
 
   const fetchAds = () => {
     setLoading(true);
-    fetch('/api/ui/ads')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/ads`)
       .then(res => res.json())
       .then(data => {
         setAds(Array.isArray(data) ? data : []);
@@ -28,7 +28,7 @@ export default function AdManager() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this ad?')) return;
     try {
-      await fetch(`/api/ui/ads/${id}`, { method: 'DELETE' });
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/ads/${id}`, { method: 'DELETE' });
       fetchAds();
     } catch (err) {
       console.error(err);
@@ -38,7 +38,7 @@ export default function AdManager() {
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/ui/ads', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/ads`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newAd)

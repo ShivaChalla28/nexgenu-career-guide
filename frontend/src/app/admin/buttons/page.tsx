@@ -9,7 +9,7 @@ export default function ButtonManager() {
 
   const fetchButtons = () => {
     setLoading(true);
-    fetch('/api/ui/buttons')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/buttons`)
       .then(res => res.json())
       .then(data => {
         setButtons(data);
@@ -28,7 +28,7 @@ export default function ButtonManager() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this button?')) return;
     try {
-      await fetch(`/api/ui/buttons/${id}`, { method: 'DELETE' });
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/buttons/${id}`, { method: 'DELETE' });
       fetchButtons();
     } catch (err) {
       console.error(err);
@@ -38,7 +38,7 @@ export default function ButtonManager() {
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/ui/buttons', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/buttons`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newButton)

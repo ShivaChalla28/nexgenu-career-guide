@@ -57,7 +57,7 @@ export default function Dashboard() {
     }
     setUser(JSON.parse(stored));
 
-    fetch('/api/ui/buttons')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/buttons`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -66,7 +66,7 @@ export default function Dashboard() {
       })
       .catch(err => console.error(err));
 
-    fetch('/api/ui/alerts')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/ui/alerts`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -87,7 +87,7 @@ export default function Dashboard() {
     if (!featureText.trim() || !user) return;
     
     try {
-      const res = await fetch('/api/feedback/submit', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/feedback/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
