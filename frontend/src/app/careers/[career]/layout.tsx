@@ -11,7 +11,7 @@ function slugToTitle(slug: string): string {
 
 async function getCareerData(slug: string): Promise<{ name?: string; overview?: string; branch?: string } | null> {
   try {
-    const res = await fetch(`http://localhost:8000/api/careers/${slug}`, {
+    const res = await fetch(`https://nexgenu-career-guide.onrender.com/api/careers/${slug}`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) return null;

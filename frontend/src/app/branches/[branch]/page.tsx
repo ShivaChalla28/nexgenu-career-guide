@@ -67,7 +67,7 @@ export default function BranchCareers({ params }: { params: { branch: string } }
     const fetchCareers = async () => {
       try {
         const slug = params.branch;
-        const res = await fetch(`http://localhost:8000/api/branches/${slug}/careers`);
+        const res = await fetch(`https://nexgenu-career-guide.onrender.com/api/branches/${slug}/careers`);
         if (!res.ok) {
           const errText = await res.text();
           throw new Error(`HTTP ${res.status}: ${errText}`);

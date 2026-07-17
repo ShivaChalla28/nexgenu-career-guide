@@ -9,7 +9,7 @@ export default function AlertManager() {
 
   const fetchAlerts = () => {
     setLoading(true);
-    fetch('http://localhost:8000/api/ui/alerts')
+    fetch('https://nexgenu-career-guide.onrender.com/api/ui/alerts')
       .then(res => res.json())
       .then(data => {
         setAlerts(data);
@@ -28,7 +28,7 @@ export default function AlertManager() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this alert?')) return;
     try {
-      await fetch(`http://localhost:8000/api/ui/alerts/${id}`, { method: 'DELETE' });
+      await fetch(`https://nexgenu-career-guide.onrender.com/api/ui/alerts/${id}`, { method: 'DELETE' });
       fetchAlerts();
     } catch (err) {
       console.error(err);
@@ -38,7 +38,7 @@ export default function AlertManager() {
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8000/api/ui/alerts', {
+      const res = await fetch('https://nexgenu-career-guide.onrender.com/api/ui/alerts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newAlert)

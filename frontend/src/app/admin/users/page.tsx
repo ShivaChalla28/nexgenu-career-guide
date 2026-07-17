@@ -8,7 +8,7 @@ export default function ManageUsers() {
 
   const fetchUsers = () => {
     setLoading(true);
-    fetch(`http://localhost:8000/api/admin/users?skip=${page * 50}&limit=50`)
+    fetch(`https://nexgenu-career-guide.onrender.com/api/admin/users?skip=${page * 50}&limit=50`)
       .then(res => res.json())
       .then(data => { setUsers(data); setLoading(false); })
       .catch(err => { console.error(err); setLoading(false); });
@@ -19,7 +19,7 @@ export default function ManageUsers() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this user?')) return;
     try {
-      await fetch(`http://localhost:8000/api/admin/users/${id}`, { method: 'DELETE' });
+      await fetch(`https://nexgenu-career-guide.onrender.com/api/admin/users/${id}`, { method: 'DELETE' });
       fetchUsers();
     } catch (err) { console.error(err); }
   };

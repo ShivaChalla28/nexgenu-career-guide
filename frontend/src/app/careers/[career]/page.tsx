@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-const API = 'http://localhost:8000';
+const API = 'https://nexgenu-career-guide.onrender.com';
 
 // ── Loading Skeleton ────────────────────────────────────────────────────────
 function LoadingSkeleton({ career }: { career: string }) {

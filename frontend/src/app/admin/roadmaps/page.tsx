@@ -8,7 +8,7 @@ export default function ManageRoadmaps() {
 
   const fetchRoadmaps = () => {
     setLoading(true);
-    fetch(`http://localhost:8000/api/roadmaps/?skip=${page * 50}&limit=50`)
+    fetch(`https://nexgenu-career-guide.onrender.com/api/roadmaps/?skip=${page * 50}&limit=50`)
       .then(res => res.json())
       .then(data => { setRoadmaps(data); setLoading(false); })
       .catch(err => { console.error(err); setLoading(false); });
@@ -19,7 +19,7 @@ export default function ManageRoadmaps() {
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this roadmap?')) return;
     try {
-      await fetch(`http://localhost:8000/api/roadmaps/${id}`, { method: 'DELETE' });
+      await fetch(`https://nexgenu-career-guide.onrender.com/api/roadmaps/${id}`, { method: 'DELETE' });
       fetchRoadmaps();
     } catch (err) { console.error(err); }
   };

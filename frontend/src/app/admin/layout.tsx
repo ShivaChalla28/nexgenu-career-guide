@@ -12,7 +12,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     setMounted(true);
-    if (localStorage.getItem('nexgenu_admin_auth') === 'true') {
+    if (sessionStorage.getItem('nexgenu_admin_auth') === 'true') {
       setIsAuthenticated(true);
     }
   }, []);
@@ -20,7 +20,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (userId === '22191A0228@Archana' && password === '23JR1A595@ShivaChalla') {
-      localStorage.setItem('nexgenu_admin_auth', 'true');
+      sessionStorage.setItem('nexgenu_admin_auth', 'true');
       setIsAuthenticated(true);
       setError('');
     } else {
@@ -29,7 +29,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('nexgenu_admin_auth');
+    sessionStorage.removeItem('nexgenu_admin_auth');
     setIsAuthenticated(false);
   };
 
@@ -93,7 +93,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="flex min-h-screen bg-background pt-20">
-      <aside className="w-64 border-r border-foreground/10 bg-foreground/5 p-6 flex flex-col fixed h-full z-10">
+      <aside className="w-64 border-r border-foreground/10 bg-foreground/5 p-6 flex flex-col fixed h-full z-10 overflow-y-auto pb-24">
         <h2 className="text-xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 mb-8">NexGenU Admin</h2>
         <nav className="flex flex-col space-y-4 flex-1">
           <Link href="/admin" className="text-sm font-semibold text-foreground/70 hover:text-blue-500 transition-colors">📊 Dashboard</Link>
@@ -113,7 +113,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/seo" className="text-sm font-semibold text-foreground/70 hover:text-green-500 transition-colors">🔍 SEO Manager</Link>
         </nav>
         
-        <div className="mb-20 pt-4 border-t border-foreground/10">
+        <div className="mt-8 pt-4 border-t border-foreground/10">
           <button 
             onClick={handleLogout}
             className="w-full py-2 px-4 bg-red-500/10 text-red-500 hover:bg-red-500/20 text-sm font-semibold rounded-lg transition-colors text-left flex items-center gap-2"

@@ -31,7 +31,7 @@ const BRANCH_SLUGS = [
 
 async function getCareerSlugs(): Promise<string[]> {
   try {
-    const res = await fetch('http://localhost:8000/api/careers', {
+    const res = await fetch('https://nexgenu-career-guide.onrender.com/api/careers', {
       next: { revalidate: 3600 },
     });
     if (!res.ok) return [];

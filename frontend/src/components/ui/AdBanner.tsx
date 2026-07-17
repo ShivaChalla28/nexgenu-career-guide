@@ -9,7 +9,7 @@ export default function AdBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/ui/ads')
+    fetch('https://nexgenu-career-guide.onrender.com/api/ui/ads')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
