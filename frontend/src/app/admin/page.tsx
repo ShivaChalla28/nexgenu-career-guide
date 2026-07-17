@@ -12,14 +12,14 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://nexgenu-career-guide.onrender.com/api/admin/stats')
+    fetch('/api/admin/stats')
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(err => console.error("Failed to fetch stats", err));
 
     Promise.all([
-      fetch('https://nexgenu-career-guide.onrender.com/api/feedback/pending').then(res => res.json()),
-      fetch('https://nexgenu-career-guide.onrender.com/api/feedback/approved').then(res => res.json())
+      fetch('/api/feedback/pending').then(res => res.json()),
+      fetch('/api/feedback/approved').then(res => res.json())
     ])
     .then(([pending, approved]) => {
       setPendingFeedback(Array.isArray(pending) ? pending : []);
@@ -34,7 +34,7 @@ export default function AdminDashboard() {
 
   const handleApprove = async (id: string) => {
     try {
-      const res = await fetch(`https://nexgenu-career-guide.onrender.com/api/feedback/${id}/approve`, { method: 'PUT' });
+      const res = await fetch(`/api/feedback/${id}/approve`, { method: 'PUT' });
       if (res.ok) {
         const approvedItem = pendingFeedback.find(f => f.id === id);
         setPendingFeedback(prev => prev.filter(f => f.id !== id));
@@ -50,7 +50,7 @@ export default function AdminDashboard() {
 
   const handleReject = async (id: string) => {
     try {
-      const res = await fetch(`https://nexgenu-career-guide.onrender.com/api/feedback/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/feedback/${id}`, { method: 'DELETE' });
       if (res.ok) {
         setPendingFeedback(prev => prev.filter(f => f.id !== id));
         setStats(prev => ({ ...prev, pending_feedback: prev.pending_feedback - 1 }));
@@ -62,7 +62,7 @@ export default function AdminDashboard() {
 
   const handleRejectApproved = async (id: string) => {
     try {
-      const res = await fetch(`https://nexgenu-career-guide.onrender.com/api/feedback/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/feedback/${id}`, { method: 'DELETE' });
       if (res.ok) {
         setApprovedFeedback(prev => prev.filter(f => f.id !== id));
         setStats(prev => ({ ...prev, approved_feedback: prev.approved_feedback - 1 }));

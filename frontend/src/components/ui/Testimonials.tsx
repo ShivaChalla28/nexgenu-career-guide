@@ -6,7 +6,7 @@ export default function Testimonials() {
   const [feedbacks, setFeedbacks] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('https://nexgenu-career-guide.onrender.com/api/feedback/approved')
+    fetch('/api/feedback/approved')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {

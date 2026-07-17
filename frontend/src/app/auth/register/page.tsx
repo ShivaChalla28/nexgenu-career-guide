@@ -105,7 +105,7 @@ export default function Register() {
 
     setLoading(true);
     try {
-      const res = await fetch('https://nexgenu-career-guide.onrender.com/api/auth/register', {
+      const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -187,9 +187,12 @@ export default function Register() {
 
             {/* Mobile */}
             <Field label="Mobile Number">
-              <input id="mobile" type="tel" placeholder="+91 98765 43210" required
-                value={formData.mobile} onChange={set('mobile')} className={inputCls}
-                pattern="[0-9+\s\-()]{7,15}" />
+                <input id="mobile" type="text"
+                  placeholder="Mobile Number" required
+                  value={formData.mobile} onChange={set('mobile')}
+                  pattern="[0-9+\s\-\(\)]{7,15}"
+                  title="7 to 15 digit mobile number"
+                  className={inputCls} />
             </Field>
 
             {/* Branch */}

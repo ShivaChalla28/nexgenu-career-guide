@@ -8,7 +8,7 @@ export default function ManageCareers() {
 
   const fetchCareers = () => {
     setLoading(true);
-    fetch(`https://nexgenu-career-guide.onrender.com/api/careers/?skip=${page * 50}&limit=50`)
+    fetch(`/api/careers/?skip=${page * 50}&limit=50`)
       .then(res => res.json())
       .then(data => { setCareers(data); setLoading(false); })
       .catch(err => { console.error(err); setLoading(false); });
@@ -19,7 +19,7 @@ export default function ManageCareers() {
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this career? This also deletes its roadmaps/mappings.')) return;
     try {
-      await fetch(`https://nexgenu-career-guide.onrender.com/api/careers/${id}`, { method: 'DELETE' });
+      await fetch(`/api/careers/${id}`, { method: 'DELETE' });
       fetchCareers();
     } catch (err) { console.error(err); }
   };
