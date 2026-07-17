@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /branches/
+Allow: /careers/
+
+Disallow: /admin
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /dashboard/
+Disallow: /auth/login
+Disallow: /auth/register
+Disallow: /payment-success
+Disallow: /user/
+
+Sitemap: https://engineeeringroadmaps.nexgenu.dpdns.org/sitemap.xml
