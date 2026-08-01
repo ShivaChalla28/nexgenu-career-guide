@@ -24,10 +24,15 @@ const nextConfig = {
     ];
   },
   async rewrites() {
+    const isProd = process.env.NODE_ENV === 'production';
+    const apiTarget = isProd 
+      ? 'https://nexgenu-career-guide.onrender.com/api/:path*' 
+      : 'http://127.0.0.1:8000/api/:path*';
+
     return [
       {
         source: '/api/:path*',
-        destination: 'https://nexgenu-career-guide.onrender.com/api/:path*',
+        destination: apiTarget,
       },
     ];
   },

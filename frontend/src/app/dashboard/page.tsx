@@ -10,6 +10,7 @@ const BRANCHES = [
   { name: 'Artificial Intelligence & Data Science',    icon: '🧠', slug: 'artificial-intelligence-and-data-science', color: 'from-purple-500/20 to-purple-600/5', border: 'border-purple-500/20', tag: 'bg-purple-500/10 text-purple-400' },
   { name: 'Electronics & Communication Engg (ECE)',    icon: '📡', slug: 'electronics-and-communication-engineering', color: 'from-yellow-500/20 to-yellow-600/5', border: 'border-yellow-500/20', tag: 'bg-yellow-500/10 text-yellow-400' },
   { name: 'Electrical & Electronics Engg (EEE)',       icon: '⚡', slug: 'electrical-and-electronics-engineering', color: 'from-orange-500/20 to-orange-600/5', border: 'border-orange-500/20', tag: 'bg-orange-500/10 text-orange-400' },
+  { name: 'Automation & Robotics Engineering (ARE)',   icon: '🤖', slug: 'automation-and-robotics-engineering',   color: 'from-blue-500/20 to-orange-500/5',  border: 'border-blue-500/20',   tag: 'bg-blue-500/10 text-blue-400' },
   { name: 'Mechanical Engineering',                    icon: '⚙️', slug: 'mechanical-engineering',                color: 'from-slate-500/20 to-slate-600/5',  border: 'border-slate-500/20',  tag: 'bg-slate-500/10 text-slate-400' },
   { name: 'Civil Engineering',                         icon: '🏗️', slug: 'civil-engineering',                    color: 'from-stone-500/20 to-stone-600/5',  border: 'border-stone-500/20',  tag: 'bg-stone-500/10 text-stone-400' },
   { name: 'Chemical Engineering',                      icon: '🧪', slug: 'chemical-engineering',                  color: 'from-green-500/20 to-green-600/5',  border: 'border-green-500/20',  tag: 'bg-green-500/10 text-green-400' },
@@ -177,6 +178,28 @@ export default function Dashboard() {
           ))}
         </div>
       </motion.div>
+
+      {/* ── Quick Access Portals ── */}
+      <section className="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Link href="/dashboard/jobs">
+          <motion.div whileHover={{ y: -5 }} className="p-6 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400">
+            <h3 className="text-xl font-bold mb-2">💼 Jobs & Internships</h3>
+            <p className="text-sm opacity-80">Browse hand-picked opportunities and apply directly.</p>
+          </motion.div>
+        </Link>
+        <Link href="/dashboard/hackathons">
+          <motion.div whileHover={{ y: -5 }} className="p-6 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-400">
+            <h3 className="text-xl font-bold mb-2">🏆 Hackathons</h3>
+            <p className="text-sm opacity-80">Compete with the best minds and win prizes.</p>
+          </motion.div>
+        </Link>
+        <Link href="/dashboard/incubation">
+          <motion.div whileHover={{ y: -5 }} className="p-6 rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400">
+            <h3 className="text-xl font-bold mb-2">🚀 Startup Incubation</h3>
+            <p className="text-sm opacity-80">Got an idea? Pitch it to our mentors and get funded.</p>
+          </motion.div>
+        </Link>
+      </section>
 
       {/* ── Branch Explorer ── */}
       <section className="mb-16">

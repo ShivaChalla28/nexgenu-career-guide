@@ -13,17 +13,15 @@ interface Career {
   industry_demand?: string;
 }
 
-const TABS = [
-  { id: 'Core Careers',            label: 'Core Careers',          icon: '🏗️', color: 'blue'   },
-  { id: 'IT & Digital Careers',    label: 'IT & Digital Careers',  icon: '💻', color: 'purple' },
-  { id: 'Government & PSU Careers',label: 'Govt & PSU Careers',    icon: '🏛️', color: 'green'  },
-];
-
 const TAB_COLORS: Record<string, string> = {
   blue:   'border-blue-500 text-blue-500 bg-blue-500/10',
   purple: 'border-purple-500 text-purple-500 bg-purple-500/10',
   green:  'border-green-500 text-green-500 bg-green-500/10',
+  orange: 'border-orange-500 text-orange-500 bg-orange-500/10',
+  pink:   'border-pink-500 text-pink-500 bg-pink-500/10',
+  teal:   'border-teal-500 text-teal-500 bg-teal-500/10',
 };
+const PALETTE_KEYS = Object.keys(TAB_COLORS);
 
 const CAREER_ICONS: Record<string, string> = {
   engineer: '⚙️', developer: '💻', designer: '🎨', analyst: '📊',
@@ -45,21 +43,25 @@ function getIcon(name: string): string {
 }
 
 function getCardAccent(category?: string): string {
-  if (category === 'IT & Digital Careers')    return 'hover:border-purple-500/40 hover:bg-purple-500/5';
-  if (category === 'Government & PSU Careers') return 'hover:border-green-500/40 hover:bg-green-500/5';
-  return 'hover:border-blue-500/40 hover:bg-blue-500/5';
+  let hash = 0;
+  const str = category || 'Core Careers';
+  for (let i = 0; i < str.length; i++) { hash = str.charCodeAt(i) + ((hash << 5) - hash); }
+  const color = PALETTE_KEYS[Math.abs(hash) % PALETTE_KEYS.length];
+  return `hover:border-${color}-500/40 hover:bg-${color}-500/5`;
 }
 
 function getTagColor(category?: string): string {
-  if (category === 'IT & Digital Careers')    return 'bg-purple-500/10 text-purple-400';
-  if (category === 'Government & PSU Careers') return 'bg-green-500/10 text-green-400';
-  return 'bg-blue-500/10 text-blue-400';
+  let hash = 0;
+  const str = category || 'Core Careers';
+  for (let i = 0; i < str.length; i++) { hash = str.charCodeAt(i) + ((hash << 5) - hash); }
+  const color = PALETTE_KEYS[Math.abs(hash) % PALETTE_KEYS.length];
+  return `bg-${color}-500/10 text-${color}-400`;
 }
 
 export default function BranchCareers({ params }: { params: { branch: string } }) {
   const [allCareers, setAllCareers] = useState<Career[]>([]);
   const [branchName, setBranchName] = useState('');
-  const [activeTab, setActiveTab] = useState('Core Careers');
+  const [activeTab, setActiveTab] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -85,13 +87,22 @@ export default function BranchCareers({ params }: { params: { branch: string } }
     fetchCareers();
   }, [params.branch]);
 
+  const categories = Array.from(new Set(allCareers.map(c => c.category || 'Core Careers'))).sort();
+  const dynamicTabs = categories.map((cat, i) => ({
+    id: cat,
+    label: cat,
+    icon: getIcon(cat),
+    color: PALETTE_KEYS[i % PALETTE_KEYS.length]
+  }));
+
   // Group careers by category
-  const grouped = TABS.reduce((acc, tab) => {
+  const grouped = dynamicTabs.reduce((acc, tab) => {
     acc[tab.id] = allCareers.filter(c => (c.category || 'Core Careers') === tab.id);
     return acc;
   }, {} as Record<string, Career[]>);
 
-  const visibleCareers = grouped[activeTab] || [];
+  const activeTabId = activeTab || dynamicTabs[0]?.id || '';
+  const visibleCareers = grouped[activeTabId] || [];
 
   return (
     <main className="flex min-h-screen flex-col items-center pt-28 pb-16 px-6">
@@ -113,9 +124,9 @@ export default function BranchCareers({ params }: { params: { branch: string } }
       {/* Tabs */}
       {!loading && !error && (
         <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {TABS.map(tab => {
+          {dynamicTabs.map(tab => {
             const count = grouped[tab.id]?.length || 0;
-            const isActive = activeTab === tab.id;
+            const isActive = activeTabId === tab.id;
             const colorClass = TAB_COLORS[tab.color];
             return (
               <button
@@ -168,7 +179,7 @@ export default function BranchCareers({ params }: { params: { branch: string } }
       {!loading && !error && visibleCareers.length > 0 && (
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeTab}
+            key={activeTabId}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
@@ -188,8 +199,7 @@ export default function BranchCareers({ params }: { params: { branch: string } }
                     <div className="flex items-start justify-between mb-3">
                       <span className="text-3xl">{getIcon(career.name)}</span>
                       <span className={`text-xs font-semibold px-2 py-1 rounded-full ${getTagColor(career.category)}`}>
-                        {career.category === 'IT & Digital Careers' ? 'IT & Digital' :
-                         career.category === 'Government & PSU Careers' ? 'Govt & PSU' : 'Core'}
+                        {career.category || 'Core Careers'}
                       </span>
                     </div>
                     <h3 className="font-bold text-xl mb-2 group-hover:text-blue-400 transition-colors">

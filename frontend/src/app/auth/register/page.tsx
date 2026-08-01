@@ -10,6 +10,7 @@ const BRANCHES = [
   'Artificial Intelligence & Data Science',
   'Electronics & Communication Engineering (ECE)',
   'Electrical & Electronics Engineering (EEE)',
+  'Automation & Robotics Engineering (ARE)',
   'Mechanical Engineering',
   'Civil Engineering',
   'Chemical Engineering',

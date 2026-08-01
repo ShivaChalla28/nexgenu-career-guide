@@ -29,6 +29,11 @@ const BRANCH_META: Record<string, { name: string; desc: string; keywords: string
     desc: 'Career paths for EEE graduates — power systems, renewable energy, PLC/SCADA, and electrical design engineering. Explore government and core industry jobs.',
     keywords: ['EEE careers', 'electrical engineer jobs India', 'power systems career', 'renewable energy roadmap', 'PSU jobs EEE'],
   },
+  'automation-and-robotics-engineering': {
+    name: 'Automation & Robotics Engineering (ARE)',
+    desc: 'Automation & Robotics Engineering career roadmaps — industrial robots, PLCs, embedded systems, Industry 4.0, and autonomous systems. Explore AI and automation careers.',
+    keywords: ['ARE careers', 'robotics engineer jobs', 'automation engineer roadmap', 'industry 4.0 career', 'PLC programming jobs'],
+  },
   'mechanical-engineering': {
     name: 'Mechanical Engineering',
     desc: 'Mechanical Engineering career roadmaps — automobile, manufacturing, CAD/CAM, aerospace, robotics, and thermal engineering. Explore core sector and PSU opportunities.',

@@ -104,6 +104,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           
           <div className="border-t border-foreground/10 my-4"></div>
           
+          <Link href="/admin/jobs" className="text-sm font-semibold text-foreground/70 hover:text-blue-500 transition-colors">💼 Jobs & Internships</Link>
+          <Link href="/admin/hackathons" className="text-sm font-semibold text-foreground/70 hover:text-blue-500 transition-colors">🏆 Hackathons</Link>
+          <Link href="/admin/incubation" className="text-sm font-semibold text-foreground/70 hover:text-blue-500 transition-colors">🚀 Startup Incubation</Link>
+
+          <div className="border-t border-foreground/10 my-4"></div>
+          
           <Link href="/admin/buttons" className="text-sm font-semibold text-foreground/70 hover:text-purple-500 transition-colors">🔘 Button Manager</Link>
           <Link href="/admin/alerts" className="text-sm font-semibold text-foreground/70 hover:text-purple-500 transition-colors">🔔 Alert Manager</Link>
           <Link href="/admin/ads" className="text-sm font-semibold text-foreground/70 hover:text-purple-500 transition-colors">📢 Ad Manager</Link>
@@ -111,6 +117,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="border-t border-foreground/10 my-4"></div>
           
           <Link href="/admin/seo" className="text-sm font-semibold text-foreground/70 hover:text-green-500 transition-colors">🔍 SEO Manager</Link>
+          <Link href="/admin/reports" className="text-sm font-semibold text-foreground/70 hover:text-green-500 transition-colors">📈 Reports</Link>
+          <Link href="/admin/settings" className="text-sm font-semibold text-foreground/70 hover:text-green-500 transition-colors">⚙️ Settings & API Vault</Link>
         </nav>
         
         <div className="mt-8 pt-4 border-t border-foreground/10">

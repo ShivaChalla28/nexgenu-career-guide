@@ -393,6 +393,55 @@ const BRANCH_DATA: Record<string, BranchEntry> = {
       "SSC JE (Environmental/Civil)", "NMCG (National Mission for Clean Ganga) Engineer",
       "GATE – Environmental Engineering (Civil branch + ES paper)"
     ]
+  },
+  "automation-and-robotics-engineering": {
+    core: [
+      "Robotics Engineer", "Industrial Robotics Engineer", "Robotics Programmer",
+      "Robotics Design Engineer", "Robot Integration Engineer", "Robot Maintenance Engineer",
+      "Collaborative Robot (Cobot) Engineer", "Mobile Robotics Engineer", "Humanoid Robotics Engineer",
+      "Service Robotics Engineer", "Robot Vision Engineer", "Robot Simulation Engineer",
+      "Robot Testing Engineer", "Robotics Research Engineer", "Robotics Safety Engineer",
+      "Field Robotics Engineer", "Robot Calibration Engineer", "Autonomous Robotics Engineer",
+      "Swarm Robotics Engineer",
+      "Automation Engineer", "Industrial Automation Engineer", "Factory Automation Engineer",
+      "Manufacturing Automation Engineer", "Process Automation Engineer", "Automation Project Engineer",
+      "Automation Validation Engineer", "Automation Commissioning Engineer", "Control Systems Engineer",
+      "Instrumentation Engineer", "PLC Programmer", "PLC Engineer", "SCADA Engineer",
+      "DCS Engineer", "HMI Engineer", "Industrial Control Engineer", "Electrical Automation Engineer",
+      "Automation Maintenance Engineer", "Automation Design Engineer",
+      "Autonomous Vehicle Engineer", "ADAS Engineer", "Drone Engineer", "UAV Engineer",
+      "UGV Engineer", "AGV Engineer", "AMR Engineer", "Marine Robotics Engineer",
+      "Aerospace Robotics Engineer", "Defense Robotics Engineer",
+      "Medical Robotics Engineer", "Surgical Robotics Engineer", "Agricultural Robotics Engineer",
+      "Mining Robotics Engineer", "Warehouse Automation Engineer", "Logistics Automation Engineer",
+      "Inspection Robotics Engineer", "Construction Robotics Engineer", "Space Robotics Engineer",
+      "Disaster Response Robotics Engineer"
+    ],
+    it: [
+      "Robotics Software Engineer", "Industry 4.0 Engineer", "Smart Manufacturing Engineer",
+      "Smart Factory Engineer", "Industrial Digitalization Engineer", "Digital Manufacturing Engineer",
+      "Manufacturing Systems Engineer", "Digital Twin Engineer", "Industrial Analytics Engineer",
+      "Connected Factory Engineer", "Smart Production Engineer",
+      "Embedded Systems Engineer", "Embedded Software Engineer", "Embedded Hardware Engineer",
+      "Firmware Engineer", "IoT Engineer", "Industrial IoT Engineer", "AIoT Engineer",
+      "Sensor Systems Engineer", "Microcontroller Engineer", "Edge AI Engineer",
+      "Real-Time Systems Engineer",
+      "AI Robotics Engineer", "Machine Learning Engineer (Robotics)", "Computer Vision Engineer",
+      "SLAM Engineer", "Motion Planning Engineer", "Navigation Engineer", "Autonomous Systems Engineer",
+      "Intelligent Systems Engineer", "Reinforcement Learning Engineer", "Robot Perception Engineer",
+      "ROS Developer", "ROS2 Developer", "Gazebo Simulation Engineer", "MATLAB Robotics Engineer",
+      "Digital Twin Developer", "Industrial Software Developer", "Simulation Engineer",
+      "Robot Programming Engineer", "Industrial Application Developer"
+    ],
+    gov: [
+      "Robotics Engineer - ISRO", "Robotics Engineer - DRDO", "Automation Engineer - BEL",
+      "Automation Engineer - BHEL", "Automation Engineer - HAL", "Automation Engineer - Indian Railways",
+      "Automation Engineer - NTPC", "Automation Engineer - NPCIL", "Automation Engineer - ONGC",
+      "Scientist (Automation & Robotics)", "Technical Officer", "IES / ESE", "GATE Based Recruitment",
+      "Robotics Research Scientist", "Automation Research Engineer", "AI Research Engineer",
+      "Mechatronics Research Engineer", "Human-Robot Interaction Researcher", "PhD Research Scholar",
+      "Professor", "Research Fellow", "Innovation Engineer", "Technology Consultant"
+    ]
   }
 };
 
