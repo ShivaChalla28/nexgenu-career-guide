@@ -16,7 +16,8 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 
 # Fallback models in case the primary one is congested (429) or invalid (400)
 MODELS = [
-    "Qwen/Qwen3-4B-Instruct-2507"
+    "meta/llama-3.1-70b-instruct",
+    "meta/llama-3.1-8b-instruct"
 ]
 
 SYSTEM_PROMPT = """You are an expert career counselor and curriculum designer for engineering students in India.
@@ -101,7 +102,7 @@ def generate_career_roadmap(career_title: str) -> dict:
     if not OPENROUTER_API_KEY:
         raise ValueError("OPENROUTER_API_KEY is missing from .env file.")
 
-    url = "https://inference.api.nscale.com/v1/chat/completions"
+    url = "https://integrate.api.nvidia.com/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json"

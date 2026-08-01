@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
-from routers import branches, careers, admin, roadmaps, ui_elements, auth, feedback
+from routers import branches, careers, admin, roadmaps, ui_elements, auth, feedback, jobs, hackathons, incubation, payments
 
 Base.metadata.create_all(bind=engine)
 
@@ -24,6 +24,10 @@ app.include_router(admin.router)
 app.include_router(roadmaps.router)
 app.include_router(ui_elements.router)
 app.include_router(feedback.router)
+app.include_router(jobs.router)
+app.include_router(hackathons.router)
+app.include_router(incubation.router)
+app.include_router(payments.router)
 
 @app.get("/")
 def read_root():

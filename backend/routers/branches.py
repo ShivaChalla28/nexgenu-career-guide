@@ -47,7 +47,17 @@ def get_careers_by_branch(branch_slug: str, db: Session = Depends(get_db)):
     career_ids = [m.career_id for m in mappings]
     careers = db.query(models.Career).filter(models.Career.id.in_(career_ids)).all()
     
-    return {"branch": branch, "careers": careers}
+    careers_data = [{
+        "id": str(c.id),
+        "name": c.name,
+        "slug": c.slug,
+        "category": c.category,
+        "overview": c.overview,
+        "india_salary": c.india_salary,
+        "industry_demand": c.industry_demand
+    } for c in careers]
+    
+    return {"branch": {"id": str(branch.id), "name": branch.name, "slug": branch.slug}, "careers": careers_data}
 
 @router.post("/", response_model=schemas.Branch)
 def create_branch(branch: schemas.BranchCreate, db: Session = Depends(get_db)):
